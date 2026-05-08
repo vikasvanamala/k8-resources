@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: resource-demo
+  labels:
+    purpose: resources demo
+
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        # soft limits
+        request:
+          memory: "68mi"
+          cpu: "100m" #1/10 th of cpu
+         # provide equal or more than requests
+        # hard limit
+        limits:
+          memory: "100mi"
+          cpu: "120m"
