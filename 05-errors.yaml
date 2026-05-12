@@ -3,7 +3,7 @@ kind: Pod
 
 metadata: 
   name: error-test
-  label:
+  labels:
     purpose: to see errors
 
 spec:
