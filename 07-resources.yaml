@@ -12,11 +12,11 @@ spec:
       image: nginx
       resources:
         # soft limits
-        request:
-          memory: "68mi"
+        requests:
+          memory: "68Mi"
           cpu: "100m" #1/10 th of cpu
          # provide equal or more than requests
         # hard limit
         limits:
-          memory: "100mi"
+          memory: "100Mi"
           cpu: "120m"
