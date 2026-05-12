@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 
 metadata: 
-  name: podConfig
+  name: pod-config
 
 data:
   course: "devsecops"
