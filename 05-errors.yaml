@@ -8,8 +8,8 @@ metadata:
 
 spec:
   containers:
-  - name: frontend
-    image: nginxsdd
+  # - name: frontend
+  #   image: nginxsdd
 
-  # - name: almalinux
-  #   image: almalinux:9
+  - name: almalinux
+    image: almalinux:9
