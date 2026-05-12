@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata: 
+  name: podConfig
+
+data:
+  course: "devsecops"
+  trainer: "siva"
+  duration: "120hrs"
