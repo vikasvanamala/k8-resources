@@ -5,7 +5,7 @@ metadata:
   name: service-lb-demo
   labels:
     project: roboshop
-    environemnet: dev
+    environment: dev
     component: frontend
     purpose: load-balancer
 
