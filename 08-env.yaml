@@ -4,7 +4,7 @@ kind: Pod
 metadata:
   name: env-demo
   labels:
-    purpose: environemnt variables
+    purpose: environemnt-variables
 
 spec:
   containers:
