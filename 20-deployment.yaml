@@ -9,7 +9,7 @@ metadata:
 
 spec:
   replicas: 4
-  selector:
+  selectors:
     matchLabels:
       project: roboshop
       purpose: deployment-demo
