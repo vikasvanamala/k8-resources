@@ -35,7 +35,7 @@ metadata:
   name: ebs-static
 spec:
   containers:
-    name: nginx
+  - name: nginx
     image: nginx
     volumeMounts:
     - name: nginx-vol
