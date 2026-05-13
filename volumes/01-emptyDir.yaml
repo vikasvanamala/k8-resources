@@ -22,5 +22,4 @@ spec:
       readOnly: true
   volumes: 
   - name: nginx-logs
-    emptyDir:
-      sizeLimit: 100mi
+    emptyDir: 100Mi
