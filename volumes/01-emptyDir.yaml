@@ -20,7 +20,7 @@ spec:
     - mountPath: /mnt/log/nginx
       name: nginx-logs
       readOnly: true
-  volume: 
+  volumes: 
   - name: nginx-logs
     emptyDir:
       sizeLimit: 100mi
