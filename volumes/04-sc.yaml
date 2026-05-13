@@ -1,5 +1,5 @@
 # SC is created by admins
-apiVersion: v1
+apiVersion: storage.k8s.io/v1v
 kind: StorageClass
 
 metadata:
@@ -7,3 +7,5 @@ metadata:
 reclaimPolicy: Retain
 provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer
+
+
