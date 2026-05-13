@@ -32,7 +32,7 @@ spec:
   #   topology.kubernetes.io/zone: us-east-1b
   volumes:
   - name: nginx-vol
-    PersistentVolumeClaim:
+    persistentVolumeClaim:
       claimName: ebs-dynamic
 
 ---
@@ -45,7 +45,7 @@ metadata:
   
 spec:
   type: LoadBalancer
-  selectors:
+  selector:
     purpose: ebs-dynamic
   ports:
   - protocol: TCP
