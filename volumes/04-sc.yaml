@@ -1,0 +1,9 @@
+# SC is created by admins
+apiVersion: v1
+kind: StorageClass
+
+metadata:
+  name: roboshop-ebs
+reclaimPolicy: Retain
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
