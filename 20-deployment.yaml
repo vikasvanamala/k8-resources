@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        iamge: nginx:latest
+        image: nginx:latest
 
 # ---
 # apiVersion: v1
