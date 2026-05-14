@@ -20,7 +20,7 @@ spec:
     metadata:
       labels:
         project: roboshop
-        purpose: headles-svc-demo
+        purpose: headless-svc-demo
 
     spec:
       containers:
