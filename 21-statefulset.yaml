@@ -14,7 +14,7 @@ spec:
   ports:
   - port: 80
     name: web
-  clusterIP: none
+  clusterIP: None
   selector:
     app: nginx
     purpose: stateful-demo
@@ -25,12 +25,12 @@ kind: Service
 metadata:
   name: nginx
   labels:
-  app: nginx 
+    app: nginx 
     purpose: satateful-demo
 spec:
   selector:
     app: nginx 
-    purpose: satateful-demo
+    purpose: stateful-demo
   ports:
     - port: 80 # service port
       name: web
