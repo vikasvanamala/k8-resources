@@ -3,40 +3,57 @@ kind: Deployment
 
 metadata: 
   name: nginx
+  # these are replica set labels
   labels:
     project: roboshop
-    purpose: deployment-demo
+    purpose: headless-svc-demo
 
 spec:
-  replicas: 5
+  replicas: 4
   selector:
+  # these labels are used to select pods
     matchLabels:
       project: roboshop
-      purpose: deployment-demo
-
+      purpose: headless-svc-demo
+   # pod definition
   template:
     metadata:
       labels:
         project: roboshop
-        purpose: deployment-demo
+        purpose: headles-svc-demo
 
     spec:
       containers:
       - name: nginx
         image: nginx:latest
 
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: nginx
-# spec:
-#   type: LoadBalancer
-#   selector:
-#     purpose: headless-svc-demo
-#     project: roboshop
-#   ports:
-#     - protocol: TCP
-#       port: 80 # service port
-#       targetPort: 80 # container port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-dp
+spec:
+  type: LoadBalancer
+  selector:
+    project: roboshop
+    purpose: headless-svc-demo
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-headless
+spec:
+  # if a service clusterIP then it is called as headless service
+  clusterIP: None
+  selector:
+    project: roboshop
+    purpose: headless-svc-demo
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
   

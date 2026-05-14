@@ -1,0 +1,74 @@
+# headless service
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: nginx-headless
+  # These labels are used to register this pod with service
+  labels:
+    app: nginx 
+    purpose: satateful-demo
+
+spec:
+  
+  ports:
+  - port: 80
+    name: web
+  clusterIP: none
+  selector:
+    app: nginx
+    purpose: stateful-demo
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: nginx
+  labels:
+  app: nginx 
+    purpose: satateful-demo
+spec:
+  selector:
+    app: nginx 
+    purpose: satateful-demo
+  ports:
+    - port: 80 # service port
+      name: web
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+      purpose: stateful-demo # has to match .spec.template.metadata.labels
+  serviceName: "nginx-headless" # this should be head less service name
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+        purpose: stateful-demo # has to match .spec.selector.matchLabels
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: nginx-html
+          mountPath: /usr/share/nginx/html
+  # This is PVC
+  volumeClaimTemplates:
+  - metadata:
+      name: nginx-html
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "roboshop-ebs"
+      resources:
+        requests:
+          storage: 1Gi
+  
